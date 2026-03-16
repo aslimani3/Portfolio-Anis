@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anis Kamil Slimani - Créateur de Sites Web</title>
+    <meta name="description" content="Créateur de sites web professionnels pour petites entreprises et travailleurs autonomes">
+    <meta property="og:title" content="Anis Slimani - Créateur de Sites Web">
+    <meta property="og:description" content="Sites web vitrines simples, modernes et professionnels">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #1a1a1a;
+            --secondary-dark: #4a4a4a;
+            --light-bg: #f9f7f4;
+            --accent-color: #d4a574;
+            --text-color: #2d2d2d;
+            --border-light: #e8e4df;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background-color: #fff;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            letter-spacing: -0.5px;
+        }
+
+        .nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 0.95rem;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav a:hover::after {
+            width: 100%;
+        }
+
+        .cta-header {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-header:hover {
+            background-color: #c49564;
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary-dark);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        main {
+            margin-top: 70px;
+        }
+
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        p {
+            color: var(--secondary-dark);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        /* Hero Section */
+        #hero {
+            background: linear-gradient(135deg, #f9f7f4 0%, #f5f1ed 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subtitle {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-dark);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(26, 26, 26, 0.2);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-dark);
+            border: 2px solid var(--primary-dark);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-dark);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* About Section */
+        #about {
+            background-color: #fff;
+        }
+
+        .about-content {
+            max-width: 750px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+        }
+
+        .highlight {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        /* Services Section */
+        #services {
+            background-color: var(--light-bg);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-light);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent-color);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--light-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            color: var(--secondary-dark);
+        }
+
+        /* Portfolio Section */
+        #portfolio {
+            background-color: #fff;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .portfolio-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #e8e4df 0%, #d4c4b0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary-dark);
+            font-size: 1rem;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .portfolio-info {
+            padding: 2rem;
+            background: white;
+        }
+
+        .portfolio-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-dark);
+        }
+
+        .portfolio-description {
+            color: var(--secondary-dark);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: var(--light-bg);
+            color: var(--accent-color);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Process Section */
+        #process {
+            background-color: var(--light-bg);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+        }
+
+        .process-step h3 {
+            margin-bottom: 0.8rem;
+        }
+
+        .process-step p {
+            font-size: 0.95rem;
+        }
+
+        /* Pricing Section */
+        #pricing {
+            background-color: #fff;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 15px 40px rgba(212, 165, 116, 0.2);
+        }
+
+        .pricing-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        .pricing-amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-description {
+            color: var(--secondary-dark);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features li {
+            color: var(--secondary-dark);
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--border-light);
+            font-size: 0.95rem;
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-note {
+            background-color: var(--light-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: var(--secondary-dark);
+            line-height: 1.7;
+        }
+
+        /* Why Me Section */
+        #whyme {
+            background-color: var(--light-bg);
+        }
+
+        .whyme-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .whyme-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .whyme-item h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+
+        .whyme-item p {
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: #fff;
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-label {
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-value {
+            color: var(--secondary-dark);
+            font-size: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            font-size: 0.95rem;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--border-light);
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-btn {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .form-btn:hover {
+            background-color: #c49564;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            color: #ccc;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .header-container {
+                padding: 1rem 1.5rem;
+            }
+
+            .process-steps,
+            .services-grid,
+            .portfolio-grid,
+            .pricing-grid,
+            .whyme-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-image {
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .about-content p {
+                font-size: 1rem;
+            }
+        }
+
+        .scroll-fade {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .scroll-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">Anis Slimani</div>
+            <nav class="nav">
+                <a href="#about">À propos</a>
+                <a href="#services">Services</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#process">Processus</a>
+                <a href="#pricing">Tarifs</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <button class="cta-header" onclick="smoothScroll('#contact')">Demander un devis</button>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-subtitle">CRÉATEUR DE SITES WEB</div>
+                    <h1>Des sites web vitrines simples, modernes et professionnels</h1>
+                    <p style="font-size: 1.1rem; color: var(--secondary-dark); margin-bottom: 2rem;">Pour petites entreprises et travailleurs autonomes qui souhaitent une présence en ligne crédible et impactante.</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="smoothScroll('#portfolio')">Voir mes projets</button>
+                        <button class="btn btn-secondary" onclick="smoothScroll('#contact')">Me contacter</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <div class="container">
+                <h2>À propos</h2>
+                <div class="about-content">
+                    <p>Je suis <span class="highlight">Créateur de sites web</span> spécialisé dans la création de <span class="highlight">vitrines professionnelles</span> pour petites entreprises, travailleurs autonomes et projets locaux.</p>
+
+                    <p>Mon approche repose sur <span class="highlight">la simplicité et l'élégance</span>. Je crois qu'un site web beau et efficace ne doit pas être compliqué. Chaque détail compte, du choix des couleurs à l'organisation du contenu, en passant par l'expérience utilisateur.</p>
+
+                    <p>Mon objectif ? Vous aider à avoir une <span class="highlight">présence en ligne crédible</span> qui inspire confiance à vos clients et qui met en valeur votre activité avec clarté et professionnalisme.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services">
+            <div class="container">
+                <h2>Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">📱</div>
+                        <h3>Création de site vitrine</h3>
+                        <p>Un site professionnel pour présenter votre activité, vos services et attirer vos premiers clients en ligne.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">✨</div>
+                        <h3>Refonte légère de site</h3>
+                        <p>Modernisez votre site existant sans tout refaire. Amélioration du design, de la navigation et de la performance.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">⚙️</div>
+                        <h3>Fonctionnalités utiles</h3>
+                        <p>Formulaires de contact, intégration Google Maps, système de réservation, liens réseaux sociaux et bien plus.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio">
+            <div class="container">
+                <h2>Mes projets</h2>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item scroll-fade">
+                        <div class="portfolio-image">Site vitrine professionnel</div>
+                        <div class="portfolio-info">
+                            <h3>Site vitrine de boulangerie</h3>
+                            <p class="portfolio-description">Un site élégant et responsive pour une petite boulangerie artisanale. Présentation des produits, localisation et formulaire de contact.</p>
+                            <div class="portfolio-tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-item scroll-fade">
+                        <div class="portfolio-image">Site vitrine moderne</div>
+                        <div class="portfolio-info">
+                            <h3>Portfolio de photographe</h3>
+                            <p class="portfolio-description">Site vitrine pour une photographe avec galerie d'images, tarifs, et système de prise de rendez-vous intégré.</p>
+                            <div class="portfolio-tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-item scroll-fade">
+                        <div class="portfolio-image">Site vitrine responsive</div>
+                        <div class="portfolio-info">
+                            <h3>Site pour coach en fitness</h3>
+                            <p class="portfolio-description">Vitrine professionnelle avec présentation des services, tarifs, avis clients et formulaire d'inscription aux séances.</p>
+                            <div class="portfolio-tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section id="process">
+            <div class="container">
+                <h2>Comment je travaille</h2>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <h3>Discussion du besoin</h3>
+                        <p>Nous parlons de votre activité, de vos objectifs et de vos attentes pour le site.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <h3>Création du site</h3>
+                        <p>Je conçois et développe un site professionnel, responsive et optimisé selon vos spécifications.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <h3>Ajustements</h3>
+                        <p>Vous revisionnez le site et me faites vos retours. Je peaufine chaque détail jusqu'à votre satisfaction.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <h3>Mise en ligne</h3>
+                        <p>Le site est déployé et prêt à accueillir vos premiers clients en ligne.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing">
+            <div class="container">
+                <h2>Tarifs</h2>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <div class="pricing-title">Landing Page</div>
+                        <div class="pricing-amount">À partir de 400 $</div>
+                        <p class="pricing-description">Une seule page simple et efficace</p>
+                        <ul class="pricing-features">
+                            <li>1 page HTML/CSS/JS</li>
+                            <li>Design responsive</li>
+                            <li>Formulaire de contact</li>
+                            <li>Optimisation SEO basique</li>
+                        </ul>
+                        <br>
+                        <br>
+                        <button class="btn btn-primary" onclick="smoothScroll('#contact')">Demander un devis</button>
+                    </div>
+
+                    <div class="pricing-card">
+                        <div class="pricing-title">Site vitrine simple</div>
+                        <div class="pricing-amount">À partir de 850 $</div>
+                        <p class="pricing-description">3-5 pages pour présenter vos services</p>
+                        <ul class="pricing-features">
+                            <li>3 à 5 pages</li>
+                            <li>Design professionnel</li>
+                            <li>Responsive mobile/tablet</li>
+                            <li>Formulaire de contact</li>
+                            <li>Google Maps intégré</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="smoothScroll('#contact')">Demander un devis</button>
+                    </div>
+
+                    <div class="pricing-card">
+                        <div class="pricing-title">Site vitrine standard</div>
+                        <div class="pricing-amount">À partir de 1150 $</div>
+                        <p class="pricing-description">6-8 pages avec plus de fonctionnalités</p>
+                        <ul class="pricing-features">
+                            <li>6 à 8 pages</li>
+                            <li>Design sur mesure</li>
+                            <li>Animations fluides</li>
+                            <li>Système de réservation</li>
+                            <li>Intégration réseaux sociaux</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="smoothScroll('#contact')">Demander un devis</button>
+                    </div>
+                </div>
+                <div class="pricing-note">
+                    <strong>Note importante :</strong> Chaque projet est unique et fait l'objet d'un devis personnalisé selon la complexité, le nombre de pages, les fonctionnalités demandées et vos besoins spécifiques.
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Me Section -->
+        <section id="whyme">
+            <div class="container">
+                <h2>Pourquoi travailler avec moi</h2>
+                <div class="whyme-grid">
+                    <div class="whyme-item">
+                        <h3>Approche personnalisée</h3>
+                        <p>Chaque projet est unique. Je prends le temps de comprendre votre vision et vos objectifs pour créer un site sur mesure.</p>
+                    </div>
+                    <div class="whyme-item">
+                        <h3>Design simple et professionnel</h3>
+                        <p>Pas de design chargé ou complexe. Je crée des interfaces claires, élégantes et faciles à utiliser.</p>
+                    </div>
+                    <div class="whyme-item">
+                        <h3>Adaptation mobile</h3>
+                        <p>Votre site fonctionne parfaitement sur tous les appareils : téléphones, tablettes et ordinateurs.</p>
+                    </div>
+                    <div class="whyme-item">
+                        <h3>Communication claire</h3>
+                        <p>Je vous tiens informé à chaque étape et je suis toujours disponible pour répondre à vos questions.</p>
+                    </div>
+                    <div class="whyme-item">
+                        <h3>Tarif au forfait</h3>
+                        <p>Pas de surprise. Vous connaissez le prix avant le début du projet, selon sa complexité et ses fonctionnalités.</p>
+                    </div>
+                    <div class="whyme-item">
+                        <h3>Débutant motivé</h3>
+                        <p>Je suis au début de mon parcours mais je mets passion et rigueur dans chaque projet pour votre satisfaction.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="container">
+                <h2>Me contacter</h2>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span class="contact-label">📧 Email</span>
+                            <a href="mailto:slimanianis24@gmail.com" class="contact-value">slimanianis24@gmail.com</a>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-label">📱 Téléphone</span>
+                            <a href="tel:+1 (514) 758-5768" class="contact-value">+1 (514) 758-5768</a>
+                        </div>
+                    </div>
+
+                    <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                        <div class="form-group">
+                            <label for="name">Nom *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Entreprise (optionnel)</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="form-btn">Demander un devis</button>
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Anis Slimani. Tous droits réservés. | Créateur de sites web professionnels</p>
+        </div>
+    </footer>
+
+    <script>
+        function smoothScroll(target) {
+            const element = document.querySelector(target);
+            if (element) {
+                const headerOffset = 80;
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const company = document.getElementById('company').value;
+            const message = document.getElementById('message').value;
+
+            const subject = encodeURIComponent('Demande de devis - Nouveau client');
+            const body = encodeURIComponent(
+                `Nom: ${name}\nEmail: ${email}\nEntreprise: ${company}\n\nMessage:\n${message}`
+            );
+
+            window.location.href = `mailto:sophie@example.com?subject=${subject}&body=${body}`;
+
+            document.getElementById('contactForm').reset();
+        }
+
+        function toggleMobileMenu() {
+            const nav = document.querySelector('.nav');
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href.length > 1) {
+                    e.preventDefault();
+                    smoothScroll(href);
+                }
+            });
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-fade').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
