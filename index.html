@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anis Kamil Slimani - Créateur de Sites Web</title>
-    <meta name="description" content="Créateur de sites web professionnels pour petites entreprises et travailleurs autonomes">
-    <meta property="og:title" content="Anis Slimani - Créateur de Sites Web">
+    <title>Anis Slimani - Développeur Web | Web Developer</title>
+    <meta name="description" content="Créateur de sites web vitrines simples, modernes et professionnels">
+    <meta property="og:title" content="Anis Slimani - Développeur Web">
     <meta property="og:description" content="Sites web vitrines simples, modernes et professionnels">
+    <meta property="og:image" content="https://bolt.new/static/og_default.png">
+    <meta name="twitter:card" content="summary_large_image">
     <style>
         * {
             margin: 0;
@@ -15,12 +17,14 @@
         }
 
         :root {
-            --primary-dark: #1a1a1a;
-            --secondary-dark: #4a4a4a;
-            --light-bg: #f9f7f4;
-            --accent-color: #d4a574;
-            --text-color: #2d2d2d;
-            --border-light: #e8e4df;
+            --primary-dark: #0f172a;
+            --primary-light: #1e293b;
+            --accent-blue: #2563eb;
+            --accent-blue-light: #dbeafe;
+            --bg-light: #f8fafc;
+            --text-dark: #0f172a;
+            --text-gray: #475569;
+            --border-color: #e2e8f0;
         }
 
         html {
@@ -28,12 +32,17 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background-color: #fff;
-            color: var(--text-color);
+            color: var(--text-dark);
             line-height: 1.6;
         }
 
+        .hidden {
+            display: none;
+        }
+
+        /* Header */
         header {
             position: fixed;
             top: 0;
@@ -42,7 +51,7 @@
             z-index: 1000;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .header-container {
@@ -57,8 +66,10 @@
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
-            color: var(--primary-dark);
-            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .nav {
@@ -69,7 +80,7 @@
 
         .nav a {
             text-decoration: none;
-            color: var(--text-color);
+            color: var(--text-dark);
             font-size: 0.95rem;
             font-weight: 500;
             position: relative;
@@ -83,7 +94,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background-color: var(--accent-color);
+            background-color: var(--accent-blue);
             transition: width 0.3s ease;
         }
 
@@ -91,21 +102,50 @@
             width: 100%;
         }
 
+        .lang-toggle {
+            display: flex;
+            gap: 0.5rem;
+            margin-left: auto;
+            margin-right: 1rem;
+        }
+
+        .lang-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid var(--accent-blue);
+            background: transparent;
+            color: var(--accent-blue);
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background-color: var(--accent-blue);
+            color: white;
+        }
+
+        .lang-btn:hover {
+            background-color: var(--accent-blue);
+            color: white;
+        }
+
         .cta-header {
-            background-color: var(--accent-color);
+            background-color: var(--accent-blue);
             color: white;
             padding: 0.75rem 1.5rem;
-            border-radius: 4px;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.9rem;
             transition: background-color 0.3s ease, transform 0.2s ease;
             border: none;
             cursor: pointer;
+            white-space: nowrap;
         }
 
         .cta-header:hover {
-            background-color: #c49564;
+            background-color: #1d4ed8;
             transform: translateY(-2px);
         }
 
@@ -163,14 +203,14 @@
         }
 
         p {
-            color: var(--secondary-dark);
+            color: var(--text-gray);
             font-size: 1rem;
             line-height: 1.8;
         }
 
         /* Hero Section */
         #hero {
-            background: linear-gradient(135deg, #f9f7f4 0%, #f5f1ed 100%);
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -197,7 +237,7 @@
         }
 
         .hero-subtitle {
-            color: var(--accent-color);
+            color: var(--accent-blue);
             font-weight: 600;
             font-size: 1rem;
             margin-bottom: 1rem;
@@ -213,7 +253,7 @@
 
         .btn {
             padding: 1rem 2.5rem;
-            border-radius: 4px;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
             font-size: 1rem;
@@ -229,19 +269,19 @@
         }
 
         .btn-primary:hover {
-            background-color: var(--secondary-dark);
+            background-color: var(--primary-light);
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(26, 26, 26, 0.2);
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.2);
         }
 
         .btn-secondary {
             background-color: transparent;
-            color: var(--primary-dark);
-            border: 2px solid var(--primary-dark);
+            color: var(--accent-blue);
+            border: 2px solid var(--accent-blue);
         }
 
         .btn-secondary:hover {
-            background-color: var(--primary-dark);
+            background-color: var(--accent-blue);
             color: white;
             transform: translateY(-3px);
         }
@@ -264,13 +304,13 @@
         }
 
         .highlight {
-            color: var(--accent-color);
+            color: var(--accent-blue);
             font-weight: 600;
         }
 
         /* Services Section */
         #services {
-            background-color: var(--light-bg);
+            background-color: var(--bg-light);
         }
 
         .services-grid {
@@ -283,22 +323,22 @@
         .service-card {
             background: white;
             padding: 2.5rem;
-            border-radius: 8px;
+            border-radius: 12px;
             text-align: center;
             transition: all 0.3s ease;
-            border: 1px solid var(--border-light);
+            border: 1px solid var(--border-color);
         }
 
         .service-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            border-color: var(--accent-color);
+            border-color: var(--accent-blue);
         }
 
         .service-icon {
             width: 60px;
             height: 60px;
-            background-color: var(--light-bg);
+            background-color: var(--accent-blue-light);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -314,7 +354,6 @@
 
         .service-card p {
             font-size: 0.95rem;
-            color: var(--secondary-dark);
         }
 
         /* Portfolio Section */
@@ -330,7 +369,7 @@
         }
 
         .portfolio-item {
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -344,11 +383,11 @@
         .portfolio-image {
             width: 100%;
             height: 250px;
-            background: linear-gradient(135deg, #e8e4df 0%, #d4c4b0 100%);
+            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--secondary-dark);
+            color: var(--text-gray);
             font-size: 1rem;
             text-align: center;
             padding: 1rem;
@@ -365,7 +404,7 @@
         }
 
         .portfolio-description {
-            color: var(--secondary-dark);
+            color: var(--text-gray);
             font-size: 0.95rem;
             margin-bottom: 1rem;
         }
@@ -378,8 +417,8 @@
 
         .tag {
             display: inline-block;
-            background-color: var(--light-bg);
-            color: var(--accent-color);
+            background-color: var(--accent-blue-light);
+            color: var(--accent-blue);
             padding: 0.4rem 0.8rem;
             border-radius: 20px;
             font-size: 0.8rem;
@@ -388,7 +427,7 @@
 
         /* Process Section */
         #process {
-            background-color: var(--light-bg);
+            background-color: var(--bg-light);
         }
 
         .process-steps {
@@ -406,7 +445,7 @@
         .step-number {
             width: 50px;
             height: 50px;
-            background-color: var(--accent-color);
+            background-color: var(--accent-blue);
             color: white;
             border-radius: 50%;
             display: flex;
@@ -438,16 +477,16 @@
         }
 
         .pricing-card {
-            border: 2px solid var(--border-light);
-            border-radius: 8px;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
             padding: 2.5rem;
             text-align: center;
             transition: all 0.3s ease;
         }
 
         .pricing-card:hover {
-            border-color: var(--accent-color);
-            box-shadow: 0 15px 40px rgba(212, 165, 116, 0.2);
+            border-color: var(--accent-blue);
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.2);
         }
 
         .pricing-title {
@@ -460,12 +499,12 @@
         .pricing-amount {
             font-size: 2.5rem;
             font-weight: 700;
-            color: var(--accent-color);
+            color: var(--accent-blue);
             margin-bottom: 0.5rem;
         }
 
         .pricing-description {
-            color: var(--secondary-dark);
+            color: var(--text-gray);
             font-size: 0.9rem;
             margin-bottom: 1.5rem;
         }
@@ -477,9 +516,9 @@
         }
 
         .pricing-features li {
-            color: var(--secondary-dark);
+            color: var(--text-gray);
             padding: 0.6rem 0;
-            border-bottom: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-color);
             font-size: 0.95rem;
         }
 
@@ -488,18 +527,18 @@
         }
 
         .pricing-note {
-            background-color: var(--light-bg);
+            background-color: var(--bg-light);
             padding: 1.5rem;
-            border-radius: 8px;
+            border-radius: 12px;
             margin-top: 2rem;
             font-size: 0.9rem;
-            color: var(--secondary-dark);
+            color: var(--text-gray);
             line-height: 1.7;
         }
 
         /* Why Me Section */
         #whyme {
-            background-color: var(--light-bg);
+            background-color: var(--bg-light);
         }
 
         .whyme-grid {
@@ -512,9 +551,9 @@
         .whyme-item {
             background: white;
             padding: 2rem;
-            border-radius: 8px;
+            border-radius: 12px;
             text-align: center;
-            border-left: 4px solid var(--accent-color);
+            border-left: 4px solid var(--accent-blue);
         }
 
         .whyme-item h3 {
@@ -558,8 +597,13 @@
         }
 
         .contact-value {
-            color: var(--secondary-dark);
+            color: var(--text-gray);
             font-size: 1rem;
+            text-decoration: none;
+        }
+
+        .contact-value:hover {
+            color: var(--accent-blue);
         }
 
         .form-group {
@@ -578,8 +622,8 @@
         textarea {
             width: 100%;
             padding: 0.8rem;
-            border: 1px solid var(--border-light);
-            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
             font-family: inherit;
             font-size: 1rem;
             transition: border-color 0.3s ease;
@@ -588,8 +632,8 @@
         input:focus,
         textarea:focus {
             outline: none;
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.1);
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
 
         textarea {
@@ -600,10 +644,10 @@
         .form-btn {
             width: 100%;
             padding: 1rem;
-            background-color: var(--accent-color);
+            background-color: var(--accent-blue);
             color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 6px;
             font-weight: 700;
             font-size: 1rem;
             cursor: pointer;
@@ -611,14 +655,14 @@
         }
 
         .form-btn:hover {
-            background-color: #c49564;
+            background-color: #1d4ed8;
             transform: translateY(-2px);
         }
 
         /* Footer */
         footer {
             background-color: var(--primary-dark);
-            color: white;
+            color: #ccc;
             text-align: center;
             padding: 2rem;
         }
@@ -661,6 +705,15 @@
 
             .header-container {
                 padding: 1rem 1.5rem;
+            }
+
+            .lang-toggle {
+                gap: 0.25rem;
+            }
+
+            .lang-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.85rem;
             }
 
             .process-steps,
@@ -711,14 +764,18 @@
         <div class="header-container">
             <div class="logo">Anis Slimani</div>
             <nav class="nav">
-                <a href="#about">À propos</a>
-                <a href="#services">Services</a>
-                <a href="#portfolio">Portfolio</a>
-                <a href="#process">Processus</a>
-                <a href="#pricing">Tarifs</a>
-                <a href="#contact">Contact</a>
+                <a href="#about" data-fr="À propos" data-en="About">À propos</a>
+                <a href="#services" data-fr="Services" data-en="Services">Services</a>
+                <a href="#portfolio" data-fr="Portfolio" data-en="Portfolio">Portfolio</a>
+                <a href="#process" data-fr="Processus" data-en="Process">Processus</a>
+                <a href="#pricing" data-fr="Tarifs" data-en="Pricing">Tarifs</a>
+                <a href="#contact" data-fr="Contact" data-en="Contact">Contact</a>
             </nav>
-            <button class="cta-header" onclick="smoothScroll('#contact')">Demander un devis</button>
+            <div class="lang-toggle">
+                <button class="lang-btn active" onclick="setLanguage('fr')" data-fr="FR" data-en="FR">FR</button>
+                <button class="lang-btn" onclick="setLanguage('en')" data-fr="EN" data-en="EN">EN</button>
+            </div>
+            <button class="cta-header" onclick="smoothScroll('#contact')" data-fr="Demander un devis" data-en="Get a Quote">Demander un devis</button>
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
                 <span></span>
                 <span></span>
@@ -732,12 +789,12 @@
         <section id="hero">
             <div class="container">
                 <div class="hero-content">
-                    <div class="hero-subtitle">CRÉATEUR DE SITES WEB</div>
-                    <h1>Des sites web vitrines simples, modernes et professionnels</h1>
-                    <p style="font-size: 1.1rem; color: var(--secondary-dark); margin-bottom: 2rem;">Pour petites entreprises et travailleurs autonomes qui souhaitent une présence en ligne crédible et impactante.</p>
+                    <div class="hero-subtitle" data-fr="DÉVELOPPEUR WEB" data-en="WEB DEVELOPER">DÉVELOPPEUR WEB</div>
+                    <h1 data-fr="Des sites web vitrines simples, modernes et professionnels" data-en="Simple, modern and professional showcase websites">Des sites web vitrines simples, modernes et professionnels</h1>
+                    <p data-fr="Pour petites entreprises et travailleurs autonomes qui souhaitent une présence en ligne crédible et impactante." data-en="For small businesses and freelancers who want a credible and impactful online presence.">Pour petites entreprises et travailleurs autonomes qui souhaitent une présence en ligne crédible et impactante.</p>
                     <div class="hero-buttons">
-                        <button class="btn btn-primary" onclick="smoothScroll('#portfolio')">Voir mes projets</button>
-                        <button class="btn btn-secondary" onclick="smoothScroll('#contact')">Me contacter</button>
+                        <button class="btn btn-primary" onclick="smoothScroll('#portfolio')" data-fr="Voir mes projets" data-en="View My Projects">Voir mes projets</button>
+                        <button class="btn btn-secondary" onclick="smoothScroll('#contact')" data-fr="Me contacter" data-en="Contact Me">Me contacter</button>
                     </div>
                 </div>
             </div>
@@ -746,13 +803,26 @@
         <!-- About Section -->
         <section id="about">
             <div class="container">
-                <h2>À propos</h2>
+                <h2 data-fr="À propos" data-en="About">À propos</h2>
                 <div class="about-content">
-                    <p>Je suis <span class="highlight">Créateur de sites web</span> spécialisé dans la création de <span class="highlight">vitrines professionnelles</span> pour petites entreprises, travailleurs autonomes et projets locaux.</p>
+                    <p>
+                        <span class="highlight" data-fr="Je suis Créateur de sites web" data-en="I am a Web Developer">Je suis Créateur de sites web</span>
+                        <span data-fr=" spécialisé dans la création de " data-en=" specializing in creating "> spécialisé dans la création de </span>
+                        <span class="highlight" data-fr="vitrines professionnelles" data-en="professional showcase sites">vitrines professionnelles</span>
+                        <span data-fr=" pour petites entreprises, travailleurs autonomes et projets locaux." data-en=" for small businesses, freelancers and local projects."> pour petites entreprises, travailleurs autonomes et projets locaux.</span>
+                    </p>
 
-                    <p>Mon approche repose sur <span class="highlight">la simplicité et l'élégance</span>. Je crois qu'un site web beau et efficace ne doit pas être compliqué. Chaque détail compte, du choix des couleurs à l'organisation du contenu, en passant par l'expérience utilisateur.</p>
+                    <p>
+                        <span data-fr="Mon approche repose sur " data-en="My approach is based on ">Mon approche repose sur </span>
+                        <span class="highlight" data-fr="la simplicité et l'élégance" data-en="simplicity and elegance">la simplicité et l'élégance</span>
+                        <span data-fr=". Je crois qu'un site web beau et efficace ne doit pas être compliqué. Chaque détail compte, du choix des couleurs à l'organisation du contenu, en passant par l'expérience utilisateur." data-en=". I believe a beautiful and effective website doesn't have to be complicated. Every detail matters, from color choices to content organization.">. Je crois qu'un site web beau et efficace ne doit pas être compliqué. Chaque détail compte, du choix des couleurs à l'organisation du contenu, en passant par l'expérience utilisateur.</span>
+                    </p>
 
-                    <p>Mon objectif ? Vous aider à avoir une <span class="highlight">présence en ligne crédible</span> qui inspire confiance à vos clients et qui met en valeur votre activité avec clarté et professionnalisme.</p>
+                    <p>
+                        <span data-fr="Mon objectif ? Vous aider à avoir une " data-en="My goal? To help you have a ">Mon objectif ? Vous aider à avoir une </span>
+                        <span class="highlight" data-fr="présence en ligne crédible" data-en="credible online presence">présence en ligne crédible</span>
+                        <span data-fr=" qui inspire confiance à vos clients et qui met en valeur votre activité avec clarté et professionnalisme." data-en=" that inspires confidence in your customers and showcases your business with clarity and professionalism."> qui inspire confiance à vos clients et qui met en valeur votre activité avec clarté et professionnalisme.</span>
+                    </p>
                 </div>
             </div>
         </section>
@@ -760,29 +830,29 @@
         <!-- Services Section -->
         <section id="services">
             <div class="container">
-                <h2>Services</h2>
+                <h2 data-fr="Services" data-en="Services">Services</h2>
                 <div class="services-grid">
                     <div class="service-card">
                         <div class="service-icon">📱</div>
-                        <h3>Création de site vitrine</h3>
-                        <p>Un site professionnel pour présenter votre activité, vos services et attirer vos premiers clients en ligne.</p>
+                        <h3 data-fr="Création de site vitrine" data-en="Showcase Website Creation">Création de site vitrine</h3>
+                        <p data-fr="Un site professionnel pour présenter votre activité, vos services et attirer vos premiers clients en ligne." data-en="A professional website to present your business, your services and attract your first customers online.">Un site professionnel pour présenter votre activité, vos services et attirer vos premiers clients en ligne.</p>
                     </div>
                     <div class="service-card">
                         <div class="service-icon">✨</div>
-                        <h3>Refonte légère de site</h3>
-                        <p>Modernisez votre site existant sans tout refaire. Amélioration du design, de la navigation et de la performance.</p>
+                        <h3 data-fr="Refonte légère de site" data-en="Light Website Redesign">Refonte légère de site</h3>
+                        <p data-fr="Modernisez votre site existant sans tout refaire. Amélioration du design, de la navigation et de la performance." data-en="Modernize your existing website without starting over. Improve design, navigation and performance.">Modernisez votre site existant sans tout refaire. Amélioration du design, de la navigation et de la performance.</p>
                     </div>
                     <div class="service-card">
                         <div class="service-icon">⚙️</div>
-                        <h3>Fonctionnalités utiles</h3>
-                        <p>Formulaires de contact, intégration Google Maps, système de réservation, liens réseaux sociaux et bien plus.</p>
+                        <h3 data-fr="Fonctionnalités utiles" data-en="Useful Features">Fonctionnalités utiles</h3>
+                        <p data-fr="Formulaires de contact, intégration Google Maps, système de réservation, liens réseaux sociaux et bien plus." data-en="Contact forms, Google Maps integration, booking system, social media links and more.">Formulaires de contact, intégration Google Maps, système de réservation, liens réseaux sociaux et bien plus.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Portfolio Section -->
-         <section id="portfolio">
+        <section id="portfolio">
             <div class="container">
                 <h2>Mes projets</h2>
       <div class="portfolio-item scroll-fade">
@@ -802,32 +872,31 @@
     </div>
 </div>
 </div>
-                    
 
         <!-- Process Section -->
         <section id="process">
             <div class="container">
-                <h2>Comment je travaille</h2>
+                <h2 data-fr="Comment je travaille" data-en="How I Work">Comment je travaille</h2>
                 <div class="process-steps">
                     <div class="process-step">
                         <div class="step-number">1</div>
-                        <h3>Discussion du besoin</h3>
-                        <p>Nous parlons de votre activité, de vos objectifs et de vos attentes pour le site.</p>
+                        <h3 data-fr="Discussion du besoin" data-en="Needs Discussion">Discussion du besoin</h3>
+                        <p data-fr="Nous parlons de votre activité, de vos objectifs et de vos attentes pour le site." data-en="We discuss your business, goals and expectations for the website.">Nous parlons de votre activité, de vos objectifs et de vos attentes pour le site.</p>
                     </div>
                     <div class="process-step">
                         <div class="step-number">2</div>
-                        <h3>Création du site</h3>
-                        <p>Je conçois et développe un site professionnel, responsive et optimisé selon vos spécifications.</p>
+                        <h3 data-fr="Création du site" data-en="Website Creation">Création du site</h3>
+                        <p data-fr="Je conçois et développe un site professionnel, responsive et optimisé selon vos spécifications." data-en="I design and develop a professional, responsive website optimized according to your specifications.">Je conçois et développe un site professionnel, responsive et optimisé selon vos spécifications.</p>
                     </div>
                     <div class="process-step">
                         <div class="step-number">3</div>
-                        <h3>Ajustements</h3>
-                        <p>Vous revisionnez le site et me faites vos retours. Je peaufine chaque détail jusqu'à votre satisfaction.</p>
+                        <h3 data-fr="Ajustements" data-en="Adjustments">Ajustements</h3>
+                        <p data-fr="Vous revisionnez le site et me faites vos retours. Je peaufine chaque détail jusqu'à votre satisfaction." data-en="You review the website and give me feedback. I refine every detail to your satisfaction.">Vous revisionnez le site et me faites vos retours. Je peaufine chaque détail jusqu'à votre satisfaction.</p>
                     </div>
                     <div class="process-step">
                         <div class="step-number">4</div>
-                        <h3>Mise en ligne</h3>
-                        <p>Le site est déployé et prêt à accueillir vos premiers clients en ligne.</p>
+                        <h3 data-fr="Mise en ligne" data-en="Launch">Mise en ligne</h3>
+                        <p data-fr="Le site est déployé et prêt à accueillir vos premiers clients en ligne." data-en="The website is deployed and ready to welcome your first online customers.">Le site est déployé et prêt à accueillir vos premiers clients en ligne.</p>
                     </div>
                 </div>
             </div>
@@ -836,53 +905,53 @@
         <!-- Pricing Section -->
         <section id="pricing">
             <div class="container">
-                <h2>Tarifs</h2>
+                <h2 data-fr="Tarifs" data-en="Pricing">Tarifs</h2>
                 <div class="pricing-grid">
                     <div class="pricing-card">
-                        <div class="pricing-title">Landing Page</div>
-                        <div class="pricing-amount">À partir de 400 $</div>
-                        <p class="pricing-description">Une seule page simple et efficace</p>
+                        <div class="pricing-title" data-fr="Landing Page" data-en="Landing Page">Landing Page</div>
+                        <div class="pricing-amount">$400</div>
+                        <p class="pricing-description" data-fr="Une seule page simple et efficace" data-en="A single simple and effective page">Une seule page simple et efficace</p>
                         <ul class="pricing-features">
-                            <li>1 page HTML/CSS/JS</li>
-                            <li>Design responsive</li>
-                            <li>Formulaire de contact</li>
-                            <li>Optimisation SEO basique</li>
+                            <li data-fr="1 page HTML/CSS/JS" data-en="1 HTML/CSS/JS page">1 page HTML/CSS/JS</li>
+                            <li data-fr="Design responsive" data-en="Responsive design">Design responsive</li>
+                            <li data-fr="Formulaire de contact" data-en="Contact form">Formulaire de contact</li>
+                            <li data-fr="Optimisation SEO basique" data-en="Basic SEO optimization">Optimisation SEO basique</li>
                         </ul>
                         <br>
-                        <br>
-                        <button class="btn btn-primary" onclick="smoothScroll('#contact')">Demander un devis</button>
+                        <button class="btn btn-primary" onclick="smoothScroll('#contact')" data-fr="Demander un devis" data-en="Get a Quote">Demander un devis</button>
                     </div>
 
                     <div class="pricing-card">
-                        <div class="pricing-title">Site vitrine simple</div>
-                        <div class="pricing-amount">À partir de 850 $</div>
-                        <p class="pricing-description">3-5 pages pour présenter vos services</p>
+                        <div class="pricing-title" data-fr="Site vitrine simple" data-en="Simple Showcase">Site vitrine simple</div>
+                        <div class="pricing-amount">$850</div>
+                        <p class="pricing-description" data-fr="3-5 pages pour présenter vos services" data-en="3-5 pages to present your services">3-5 pages pour présenter vos services</p>
                         <ul class="pricing-features">
-                            <li>3 à 5 pages</li>
-                            <li>Design professionnel</li>
-                            <li>Responsive mobile/tablet</li>
-                            <li>Formulaire de contact</li>
-                            <li>Google Maps intégré</li>
+                            <li data-fr="3 à 5 pages" data-en="3 to 5 pages">3 à 5 pages</li>
+                            <li data-fr="Design professionnel" data-en="Professional design">Design professionnel</li>
+                            <li data-fr="Responsive mobile/tablet" data-en="Mobile/tablet responsive">Responsive mobile/tablet</li>
+                            <li data-fr="Formulaire de contact" data-en="Contact form">Formulaire de contact</li>
+                            <li data-fr="Google Maps intégré" data-en="Integrated Google Maps">Google Maps intégré</li>
                         </ul>
-                        <button class="btn btn-primary" onclick="smoothScroll('#contact')">Demander un devis</button>
+                        <button class="btn btn-primary" onclick="smoothScroll('#contact')" data-fr="Demander un devis" data-en="Get a Quote">Demander un devis</button>
                     </div>
 
                     <div class="pricing-card">
-                        <div class="pricing-title">Site vitrine standard</div>
-                        <div class="pricing-amount">À partir de 1150 $</div>
-                        <p class="pricing-description">6-8 pages avec plus de fonctionnalités</p>
+                        <div class="pricing-title" data-fr="Site vitrine standard" data-en="Standard Showcase">Site vitrine standard</div>
+                        <div class="pricing-amount">$1150</div>
+                        <p class="pricing-description" data-fr="6-8 pages avec plus de fonctionnalités" data-en="6-8 pages with more features">6-8 pages avec plus de fonctionnalités</p>
                         <ul class="pricing-features">
-                            <li>6 à 8 pages</li>
-                            <li>Design sur mesure</li>
-                            <li>Animations fluides</li>
-                            <li>Système de réservation</li>
-                            <li>Intégration réseaux sociaux</li>
+                            <li data-fr="6 à 8 pages" data-en="6 to 8 pages">6 à 8 pages</li>
+                            <li data-fr="Design sur mesure" data-en="Custom design">Design sur mesure</li>
+                            <li data-fr="Animations fluides" data-en="Smooth animations">Animations fluides</li>
+                            <li data-fr="Système de réservation" data-en="Booking system">Système de réservation</li>
+                            <li data-fr="Intégration réseaux sociaux" data-en="Social media integration">Intégration réseaux sociaux</li>
                         </ul>
-                        <button class="btn btn-primary" onclick="smoothScroll('#contact')">Demander un devis</button>
+                        <button class="btn btn-primary" onclick="smoothScroll('#contact')" data-fr="Demander un devis" data-en="Get a Quote">Demander un devis</button>
                     </div>
                 </div>
                 <div class="pricing-note">
-                    <strong>Note importante :</strong> Chaque projet est unique et fait l'objet d'un devis personnalisé selon la complexité, le nombre de pages, les fonctionnalités demandées et vos besoins spécifiques.
+                    <strong data-fr="Note importante :" data-en="Important Note:">Note importante :</strong>
+                    <span data-fr="Chaque projet est unique et fait l'objet d'un devis personnalisé selon la complexité, le nombre de pages, les fonctionnalités demandées et vos besoins spécifiques." data-en="Each project is unique and subject to a personalized quote based on complexity, number of pages, requested features and your specific needs.">Chaque projet est unique et fait l'objet d'un devis personnalisé selon la complexité, le nombre de pages, les fonctionnalités demandées et vos besoins spécifiques.</span>
                 </div>
             </div>
         </section>
@@ -890,31 +959,31 @@
         <!-- Why Me Section -->
         <section id="whyme">
             <div class="container">
-                <h2>Pourquoi travailler avec moi</h2>
+                <h2 data-fr="Pourquoi travailler avec moi" data-en="Why Work With Me">Pourquoi travailler avec moi</h2>
                 <div class="whyme-grid">
                     <div class="whyme-item">
-                        <h3>Approche personnalisée</h3>
-                        <p>Chaque projet est unique. Je prends le temps de comprendre votre vision et vos objectifs pour créer un site sur mesure.</p>
+                        <h3 data-fr="Approche personnalisée" data-en="Personalized Approach">Approche personnalisée</h3>
+                        <p data-fr="Chaque projet est unique. Je prends le temps de comprendre votre vision et vos objectifs pour créer un site sur mesure." data-en="Every project is unique. I take time to understand your vision and goals to create a custom website.">Chaque projet est unique. Je prends le temps de comprendre votre vision et vos objectifs pour créer un site sur mesure.</p>
                     </div>
                     <div class="whyme-item">
-                        <h3>Design simple et professionnel</h3>
-                        <p>Pas de design chargé ou complexe. Je crée des interfaces claires, élégantes et faciles à utiliser.</p>
+                        <h3 data-fr="Design simple et professionnel" data-en="Simple and Professional Design">Design simple et professionnel</h3>
+                        <p data-fr="Pas de design chargé ou complexe. Je crée des interfaces claires, élégantes et faciles à utiliser." data-en="No cluttered or complex design. I create clear, elegant and easy-to-use interfaces.">Pas de design chargé ou complexe. Je crée des interfaces claires, élégantes et faciles à utiliser.</p>
                     </div>
                     <div class="whyme-item">
-                        <h3>Adaptation mobile</h3>
-                        <p>Votre site fonctionne parfaitement sur tous les appareils : téléphones, tablettes et ordinateurs.</p>
+                        <h3 data-fr="Adaptation mobile" data-en="Mobile Adaptation">Adaptation mobile</h3>
+                        <p data-fr="Votre site fonctionne parfaitement sur tous les appareils : téléphones, tablettes et ordinateurs." data-en="Your website works perfectly on all devices: phones, tablets and computers.">Votre site fonctionne parfaitement sur tous les appareils : téléphones, tablettes et ordinateurs.</p>
                     </div>
                     <div class="whyme-item">
-                        <h3>Communication claire</h3>
-                        <p>Je vous tiens informé à chaque étape et je suis toujours disponible pour répondre à vos questions.</p>
+                        <h3 data-fr="Communication claire" data-en="Clear Communication">Communication claire</h3>
+                        <p data-fr="Je vous tiens informé à chaque étape et je suis toujours disponible pour répondre à vos questions." data-en="I keep you informed at every step and I'm always available to answer your questions.">Je vous tiens informé à chaque étape et je suis toujours disponible pour répondre à vos questions.</p>
                     </div>
                     <div class="whyme-item">
-                        <h3>Tarif au forfait</h3>
-                        <p>Pas de surprise. Vous connaissez le prix avant le début du projet, selon sa complexité et ses fonctionnalités.</p>
+                        <h3 data-fr="Tarif au forfait" data-en="Fixed Rate">Tarif au forfait</h3>
+                        <p data-fr="Pas de surprise. Vous connaissez le prix avant le début du projet, selon sa complexité et ses fonctionnalités." data-en="No surprises. You know the price before the project starts, depending on its complexity and features.">Pas de surprise. Vous connaissez le prix avant le début du projet, selon sa complexité et ses fonctionnalités.</p>
                     </div>
                     <div class="whyme-item">
-                        <h3>Débutant motivé</h3>
-                        <p>Je suis au début de mon parcours mais je mets passion et rigueur dans chaque projet pour votre satisfaction.</p>
+                        <h3 data-fr="Débutant motivé" data-en="Motivated Beginner">Débutant motivé</h3>
+                        <p data-fr="Je suis au début de mon parcours mais je mets passion et rigueur dans chaque projet pour votre satisfaction." data-en="I'm at the beginning of my journey but I put passion and rigor into every project for your satisfaction.">Je suis au début de mon parcours mais je mets passion et rigueur dans chaque projet pour votre satisfaction.</p>
                     </div>
                 </div>
             </div>
@@ -923,7 +992,7 @@
         <!-- Contact Section -->
         <section id="contact">
             <div class="container">
-                <h2>Me contacter</h2>
+                <h2 data-fr="Me contacter" data-en="Contact Me">Me contacter</h2>
                 <div class="contact-container">
                     <div class="contact-info">
                         <div class="contact-item">
@@ -931,31 +1000,30 @@
                             <a href="mailto:slimanianis24@gmail.com" class="contact-value">slimanianis24@gmail.com</a>
                         </div>
                         <div class="contact-item">
-                            <span class="contact-label">📱 Téléphone</span>
-                            <a href="tel:+1 (514) 758-5768" class="contact-value">+1 (514) 758-5768</a>
+                            <span class="contact-label">📱 <span data-fr="Téléphone" data-en="Phone">Téléphone</span></span>
+                            <a href="tel:+15147585768" class="contact-value">+1 (514) 758-5768</a>
                         </div>
                     </div>
 
                     <form id="contactForm" onsubmit="handleFormSubmit(event)">
                         <div class="form-group">
-                            <label for="name">Nom *</label>
+                            <label for="name" data-fr="Nom" data-en="Name">Nom</label>
                             <input type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email *</label>
+                            <label for="email" data-fr="Email" data-en="Email">Email</label>
                             <input type="email" id="email" name="email" required>
                         </div>
                         <div class="form-group">
-                            <label for="company">Entreprise (optionnel)</label>
+                            <label for="company" data-fr="Entreprise (optionnel)" data-en="Company (optional)">Entreprise (optionnel)</label>
                             <input type="text" id="company" name="company">
                         </div>
                         <div class="form-group">
-                            <label for="message">Message *</label>
+                            <label for="message" data-fr="Message" data-en="Message">Message</label>
                             <textarea id="message" name="message" required></textarea>
                         </div>
-                        
-                        <button type="submit" class="form-btn">Demander un devis</button>
-                        </a>
+
+                        <button type="submit" class="form-btn" data-fr="Demander un devis" data-en="Get a Quote">Demander un devis</button>
                     </form>
                 </div>
             </div>
@@ -964,11 +1032,39 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 Anis Slimani. Tous droits réservés. | Créateur de sites web professionnels</p>
+            <p data-fr="© 2026 Anis Slimani. Tous droits réservés. | Créateur de sites web professionnels" data-en="© 2026 Anis Slimani. All rights reserved. | Professional website creator">© 2026 Anis Slimani. Tous droits réservés. | Créateur de sites web professionnels</p>
         </div>
     </footer>
 
     <script>
+        let currentLanguage = 'fr';
+
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            localStorage.setItem('language', lang);
+
+            // Update all elements with data attributes
+            document.querySelectorAll('[data-fr][data-en]').forEach(element => {
+                const text = element.getAttribute(`data-${lang}`);
+                if (text) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = text;
+                    } else {
+                        element.textContent = text;
+                    }
+                }
+            });
+
+            // Update language buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Update document language
+            document.documentElement.lang = lang;
+        }
+
         function smoothScroll(target) {
             const element = document.querySelector(target);
             if (element) {
@@ -990,9 +1086,13 @@
             const company = document.getElementById('company').value;
             const message = document.getElementById('message').value;
 
-            const subject = encodeURIComponent('Demande de devis - Nouveau client');
+            const subject = encodeURIComponent(currentLanguage === 'fr' ? 'Demande de devis - Nouveau client' : 'Quote Request - New Client');
+            const nameLabel = currentLanguage === 'fr' ? 'Nom' : 'Name';
+            const companyLabel = currentLanguage === 'fr' ? 'Entreprise' : 'Company';
+            const messageLabel = currentLanguage === 'fr' ? 'Message' : 'Message';
+
             const body = encodeURIComponent(
-                `Nom: ${name}\nEmail: ${email}\nEntreprise: ${company}\n\nMessage:\n${message}`
+                `${nameLabel}: ${name}\nEmail: ${email}\n${companyLabel}: ${company}\n\n${messageLabel}:\n${message}`
             );
 
             window.location.href = `mailto:slimanianis24@gmail.com?subject=${subject}&body=${body}`;
@@ -1002,7 +1102,7 @@
 
         function toggleMobileMenu() {
             const nav = document.querySelector('.nav');
-            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+            nav.classList.toggle('hidden');
         }
 
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1032,6 +1132,33 @@
         document.querySelectorAll('.scroll-fade').forEach(element => {
             observer.observe(element);
         });
+
+        // Initialize language on page load
+        const savedLanguage = localStorage.getItem('language') || 'fr';
+        if (savedLanguage !== 'fr') {
+            currentLanguage = savedLanguage;
+
+            // Update all elements
+            document.querySelectorAll('[data-fr][data-en]').forEach(element => {
+                const text = element.getAttribute(`data-${savedLanguage}`);
+                if (text) {
+                    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                        element.placeholder = text;
+                    } else {
+                        element.textContent = text;
+                    }
+                }
+            });
+
+            // Update language button
+            const langBtn = document.querySelector(`[onclick="setLanguage('${savedLanguage}')"]`);
+            if (langBtn) {
+                document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+                langBtn.classList.add('active');
+            }
+
+            document.documentElement.lang = savedLanguage;
+        }
     </script>
 </body>
 </html>
