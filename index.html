@@ -10,21 +10,23 @@
     <meta property="og:image" content="https://bolt.new/static/og_default.png">
     <meta name="twitter:card" content="summary_large_image">
     <style>
-        * {
+       * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
         :root {
-            --primary-dark: #0f172a;
-            --primary-light: #1e293b;
-            --accent-blue: #2563eb;
-            --accent-blue-light: #dbeafe;
-            --bg-light: #f8fafc;
-            --text-dark: #0f172a;
-            --text-gray: #475569;
-            --border-color: #e2e8f0;
+            --primary-dark: #f8fafc;
+            --primary-light: #cbd5e1;
+            --accent-blue: #3b82f6;
+            --accent-blue-light: rgba(59, 130, 246, 0.15);
+            --bg-dark: #0b0f19;
+            --card-bg: rgba(15, 23, 42, 0.75);
+            --card-border: #1e293b;
+            --text-dark: #f8fafc;
+            --text-gray: #94a3b8;
+            --border-color: #1e293b;
         }
 
         html {
@@ -33,7 +35,8 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: #fff;
+            background: radial-gradient(circle at 50% 0%, #1e293b 0%, #0b0f19 75%);
+            background-attachment: fixed;
             color: var(--text-dark);
             line-height: 1.6;
         }
@@ -44,18 +47,18 @@
 
         /* Header */
         header {
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
+            width: 100%;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
         }
 
         .header-container {
-            max-width: 1200px;
+            max-width: 1400px; /* Augmenté pour donner plus d'espace sur les grands écrans */
             margin: 0 auto;
             padding: 1rem 2rem;
             display: flex;
@@ -70,13 +73,14 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-right: auto;
         }
 
         .nav {
             display: flex;
             gap: 2rem;
             align-items: center;
+            margin-left: 3rem; /* Espacement ajouté pour décoller les liens du logo */
+            margin-right: auto; /* Pousse les boutons FR/EN et CTA vers la droite */
         }
 
         .nav a {
@@ -121,11 +125,7 @@
             transition: all 0.3s ease;
         }
 
-        .lang-btn.active {
-            background-color: var(--accent-blue);
-            color: white;
-        }
-
+        .lang-btn.active,
         .lang-btn:hover {
             background-color: var(--accent-blue);
             color: white;
@@ -173,6 +173,7 @@
 
         section {
             padding: 5rem 2rem;
+            background-color: transparent;
         }
 
         .container {
@@ -211,7 +212,12 @@
 
         /* Hero Section */
         #hero {
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            background-color: transparent;
+            background-image: 
+                radial-gradient(rgba(59, 130, 246, 0.15) 1px, transparent 1px),
+                linear-gradient(to right, rgba(30, 41, 59, 0.4) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(30, 41, 59, 0.4) 1px, transparent 1px);
+            background-size: 20px 20px, 40px 40px, 40px 40px;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -265,14 +271,14 @@
         }
 
         .btn-primary {
-            background-color: var(--primary-dark);
+            background-color: var(--accent-blue);
             color: white;
         }
 
         .btn-primary:hover {
-            background-color: var(--primary-light);
+            background-color: #1d4ed8;
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.2);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
         }
 
         .btn-secondary {
@@ -289,7 +295,7 @@
 
         /* About Section */
         #about {
-            background-color: #fff;
+            background-color: transparent;
         }
 
         .about-content {
@@ -311,7 +317,7 @@
 
         /* Services Section */
         #services {
-            background-color: var(--bg-light);
+            background-color: transparent;
         }
 
         .services-grid {
@@ -322,17 +328,18 @@
         }
 
         .service-card {
-            background: white;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
             padding: 2.5rem;
             border-radius: 12px;
             text-align: center;
             transition: all 0.3s ease;
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--card-border);
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
             border-color: var(--accent-blue);
         }
 
@@ -359,7 +366,7 @@
 
         /* Portfolio Section */
         #portfolio {
-            background-color: #fff;
+            background-color: transparent;
         }
 
         .portfolio-grid {
@@ -372,31 +379,38 @@
         .portfolio-item {
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--card-border);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .portfolio-item:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            border-color: var(--accent-blue);
         }
 
         .portfolio-image {
-            width: 100%;
-            height: 250px;
-            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-gray);
-            font-size: 1rem;
-            text-align: center;
-            padding: 1rem;
-        }
+    width: 100%;
+    height: 250px;
+    background-color: transparent;
+    display: block;
+    padding: 0;
+    overflow: hidden;
+}
 
+.portfolio-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
         .portfolio-info {
             padding: 2rem;
-            background: white;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
         }
 
         .portfolio-info h3 {
@@ -428,7 +442,7 @@
 
         /* Process Section */
         #process {
-            background-color: var(--bg-light);
+            background-color: transparent;
         }
 
         .process-steps {
@@ -467,7 +481,7 @@
 
         /* Pricing Section */
         #pricing {
-            background-color: #fff;
+            background-color: transparent;
         }
 
         .pricing-grid {
@@ -478,22 +492,18 @@
         }
 
         .pricing-card {
-            border: 2px solid var(--border-color);
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
             border-radius: 12px;
             padding: 2.5rem;
             text-align: center;
             transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
         }
-
-        .pricing-card .btn {
-         margin-top: auto;
-}
 
         .pricing-card:hover {
             border-color: var(--accent-blue);
-            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.2);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.25);
         }
 
         .pricing-title {
@@ -525,7 +535,7 @@
         .pricing-features li {
             color: var(--text-gray);
             padding: 0.6rem 0;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--card-border);
             font-size: 0.95rem;
         }
 
@@ -534,7 +544,8 @@
         }
 
         .pricing-note {
-            background-color: var(--bg-light);
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
             padding: 1.5rem;
             border-radius: 12px;
             margin-top: 2rem;
@@ -545,7 +556,7 @@
 
         /* Why Me Section */
         #whyme {
-            background-color: var(--bg-light);
+            background-color: transparent;
         }
 
         .whyme-grid {
@@ -556,10 +567,12 @@
         }
 
         .whyme-item {
-            background: white;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
             padding: 2rem;
             border-radius: 12px;
             text-align: center;
+            border: 1px solid var(--card-border);
             border-left: 4px solid var(--accent-blue);
         }
 
@@ -574,7 +587,7 @@
 
         /* Contact Section */
         #contact {
-            background-color: #fff;
+            background-color: transparent;
         }
 
         .contact-container {
@@ -629,18 +642,20 @@
         textarea {
             width: 100%;
             padding: 0.8rem;
-            border: 1px solid var(--border-color);
+            background: rgba(15, 23, 42, 0.8);
+            color: #fff;
+            border: 1px solid var(--card-border);
             border-radius: 6px;
             font-family: inherit;
             font-size: 1rem;
-            transition: border-color 0.3s ease;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         input:focus,
         textarea:focus {
             outline: none;
             border-color: var(--accent-blue);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
         }
 
         textarea {
@@ -668,14 +683,15 @@
 
         /* Footer */
         footer {
-            background-color: var(--primary-dark);
-            color: #ccc;
+            background-color: rgba(11, 15, 25, 0.95);
+            border-top: 1px solid var(--card-border);
+            color: var(--text-gray);
             text-align: center;
             padding: 2rem;
         }
 
         footer p {
-            color: #ccc;
+            color: var(--text-gray);
         }
 
         /* Responsive */
@@ -859,28 +875,94 @@
         </section>
 
         <!-- Portfolio Section -->
+        <!-- Portfolio Section -->
         <section id="portfolio">
-    <div class="container">
-        <h2 data-fr="Mes projets" data-en="My Projects">Mes projets</h2>
-        <div class="portfolio-grid">
-     <div class="portfolio-item scroll-fade">
-    <div class="portfolio-image" style="background-image: url('previewcoaching.png'); background-size: contain; background-repeat: no-repeat; background-position: center; background-color: #ffffff;"></div>
-    <div class="portfolio-info">
-        <h3>Tatamo Coaching</h3>
-        <p class="portfolio-description" data-fr="Développement d'un site web professionnel pour une activité de coaching personnel. Intégration de sections de réservation, gestion des avis clients et optimisation mobile." data-en="Development of a professional website for a personal coaching business. Integration of booking sections, client review management, and mobile optimization.">
-            Développement d'un site web professionnel pour une activité de coaching personnel. Intégration de sections de réservation, gestion des avis clients et optimisation mobile.
-        </p>
-        <div class="portfolio-tags" style="margin-bottom: 1rem;">
-            <span class="tag">HTML</span>
-            <span class="tag">CSS</span>
-            <span class="tag">JavaScript</span>
-            <span class="tag">GitHub Pages</span>
-        </div>
-        <a href="https://tatamocoaching.com" target="_blank" style="color: var(--accent-color); text-decoration: none; font-weight: 600; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 5px;" data-fr="Voir le site en ligne ↗" data-en="View live website ↗">
-            Voir le site en ligne ↗
-        </a>
-    </div>
-</div>
+            <div class="container">
+                <h2 data-fr="Mes projets" data-en="My Projects">Mes projets</h2>
+                <div class="portfolio-grid">
+                    
+                    <div class="portfolio-item scroll-fade">
+                        <div class="portfolio-image">
+                            <img src="Logo Tatamo coaching.PNG" alt="Fanja Rajery - Tatamo Coaching">
+                        </div>
+                        <div class="portfolio-info">
+                            <h3 data-fr="Tatamo Coaching (Site Réel)" data-en="Tatamo Coaching (Real Site)">Tatamo Coaching (Site Réel)</h3>
+                            <p class="portfolio-description" 
+                               data-fr="Développement d'un site web professionnel pour une activité de coaching personnel. Intégration de sections de réservation, gestion des avis clients et optimisation mobile." 
+                               data-en="Development of a professional website for a personal coaching business. Integration of booking sections, client reviews management, and mobile optimization.">
+                               Développement d'un site web professionnel pour une activité de coaching personnel. Intégration de sections de réservation, gestion des avis clients et optimisation mobile.
+                            </p>
+                            <div class="portfolio-tags" style="margin-bottom: 1rem;">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">GitHub Pages</span>
+                            </div>
+                            <a href="https://tatamocoaching.com" target="_blank" style="color: var(--accent-color); text-decoration: none; font-weight: 600; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 5px;"
+                               data-fr="Voir le site en ligne ↗" data-en="View Live Site ↗">
+                                Voir le site en ligne ↗
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-item scroll-fade">
+                        <div class="portfolio-image">
+                            <img src="resto.png" alt="L'Écrin Noir">
+                        </div>
+                        <div class="portfolio-info">
+                            <h3 data-fr="L'Écrin noir (Site fictif)" data-en="L'Écrin Noir (Demo Site)">L'Écrin noir (Site fictif)</h3>
+                            <p class="portfolio-description" 
+                               data-fr="Développement d'un site web professionnel pour un restaurant. Menu et système de réservation inclus." 
+                               data-en="Development of a professional website for a restaurant. Menu and booking system included.">
+                               Développement d'un site web professionnel pour un restaurant. Menu et système de réservation inclus.
+                            </p>
+                            <div class="portfolio-tags" style="margin-bottom: 1rem;">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">GitHub Pages</span>
+                            </div>
+                            <a href="https://aslimani3.github.io/indexresto.html/" target="_blank" style="color: var(--accent-color); text-decoration: none; font-weight: 600; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 5px;"
+                               data-fr="Voir le site en ligne ↗" data-en="View Live Site ↗">
+                                Voir le site en ligne ↗
+                            </a>
+                        </div>
+                    </div>
+
+
+<div class="portfolio-item scroll-fade">
+                        <div class="portfolio-image">
+                            <img src="barber.png" alt="L'Écrin Noir">
+                        </div>
+                        <div class="portfolio-info">
+                            <h3 data-fr="L'Atelier du Ciseau (Site fictif)" data-en="L'Atelier du Ciseau (Demo Site)">L'Atelier du Ciseau (Site fictif)</h3>
+                            <p class="portfolio-description" 
+                               data-fr="Développement d'un site web professionnel pour un Barbier. Menu et système de réservation inclus." 
+                               data-en="Development of a professional website for a Barbershop. Menu and booking system included.">
+                               Développement d'un site web professionnel pour un Barbier. Menu et système de réservation inclus.
+                            </p>
+                            <div class="portfolio-tags" style="margin-bottom: 1rem;">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">GitHub Pages</span>
+                            </div>
+                            <a href="https://aslimani3.github.io/barber/" target="_blank" style="color: var(--accent-color); text-decoration: none; font-weight: 600; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 5px;"
+                               data-fr="Voir le site en ligne ↗" data-en="View Live Site ↗">
+                                Voir le site en ligne ↗
+                            </a>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                </div>
+            </div>
+        </section>
+
 </div>
 
         <!-- Process Section -->
@@ -913,63 +995,58 @@
         </section>
 
         <!-- Pricing Section -->
-       <!-- Pricing Section -->
-<section id="pricing">
-    <div class="container">
-        <h2 data-fr="Tarifs" data-en="Pricing">Tarifs</h2>
-        <div class="pricing-grid">
-            
-            <!-- Landing Page -->
-            <div class="pricing-card">
-                <div class="pricing-title" data-fr="Landing Page" data-en="Landing Page">Landing Page</div>
-                <div class="pricing-amount">$400</div>
-                <p class="pricing-description" data-fr="Une seule page simple et efficace" data-en="A single simple and effective page">Une seule page simple et efficace</p>
-                <ul class="pricing-features">
-                    <li data-fr="1 page HTML/CSS/JS" data-en="1 HTML/CSS/JS page">1 page HTML/CSS/JS</li>
-                    <li data-fr="Design responsive" data-en="Responsive design">Design responsive</li>
-                    <li data-fr="Formulaire de contact" data-en="Contact form">Formulaire de contact</li>
-                    <li data-fr="Optimisation SEO basique" data-en="Basic SEO optimization">Optimisation SEO basique</li>
-                </ul>
-                <button class="btn btn-primary" onclick="smoothScroll('#contact')" data-fr="Demander un devis" data-en="Get a Quote">Demander un devis</button>
-            </div>
+        <section id="pricing">
+            <div class="container">
+                <h2 data-fr="Tarifs" data-en="Pricing">Tarifs</h2>
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <div class="pricing-title" data-fr="Landing Page" data-en="Landing Page">Landing Page</div>
+                        <div class="pricing-amount">$400</div>
+                        <p class="pricing-description" data-fr="Une seule page simple et efficace" data-en="A single simple and effective page">Une seule page simple et efficace</p>
+                        <ul class="pricing-features">
+                            <li data-fr="1 page HTML/CSS/JS" data-en="1 HTML/CSS/JS page">1 page HTML/CSS/JS</li>
+                            <li data-fr="Design responsive" data-en="Responsive design">Design responsive</li>
+                            <li data-fr="Formulaire de contact" data-en="Contact form">Formulaire de contact</li>
+                            <li data-fr="Optimisation SEO basique" data-en="Basic SEO optimization">Optimisation SEO basique</li>
+                        </ul>
+                        <br>
+                        <button class="btn btn-primary" onclick="smoothScroll('#contact')" data-fr="Demander un devis" data-en="Get a Quote">Demander un devis</button>
+                    </div>
 
-            <!-- Site vitrine simple -->
-            <div class="pricing-card">
-                <div class="pricing-title" data-fr="Site vitrine simple" data-en="Simple Showcase">Site vitrine simple</div>
-                <div class="pricing-amount">$850</div>
-                <p class="pricing-description" data-fr="3-5 pages pour présenter vos services" data-en="3-5 pages to present your services">3-5 pages pour présenter vos services</p>
-                <ul class="pricing-features">
-                    <li data-fr="3 à 5 pages" data-en="3 to 5 pages">3 à 5 pages</li>
-                    <li data-fr="Design professionnel" data-en="Professional design">Design professionnel</li>
-                    <li data-fr="Responsive mobile/tablet" data-en="Mobile/tablet responsive">Responsive mobile/tablet</li>
-                    <li data-fr="Formulaire de contact" data-en="Contact form">Formulaire de contact</li>
-                    <li data-fr="Google Maps intégré" data-en="Integrated Google Maps">Google Maps intégré</li>
-                </ul>
-                <button class="btn btn-primary" onclick="smoothScroll('#contact')" data-fr="Demander un devis" data-en="Get a Quote">Demander un devis</button>
-            </div>
+                    <div class="pricing-card">
+                        <div class="pricing-title" data-fr="Site vitrine simple" data-en="Simple Showcase">Site vitrine simple</div>
+                        <div class="pricing-amount">$900</div>
+                        <p class="pricing-description" data-fr="3-5 pages pour présenter vos services" data-en="3-5 pages to present your services">3-5 pages pour présenter vos services</p>
+                        <ul class="pricing-features">
+                            <li data-fr="3 à 5 pages" data-en="3 to 5 pages">3 à 5 pages</li>
+                            <li data-fr="Design professionnel" data-en="Professional design">Design professionnel</li>
+                            <li data-fr="Responsive mobile/tablet" data-en="Mobile/tablet responsive">Responsive mobile/tablet</li>
+                            <li data-fr="Formulaire de contact" data-en="Contact form">Formulaire de contact</li>
+                            <li data-fr="Google Maps intégré" data-en="Integrated Google Maps">Google Maps intégré</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="smoothScroll('#contact')" data-fr="Demander un devis" data-en="Get a Quote">Demander un devis</button>
+                    </div>
 
-            <!-- Site vitrine standard -->
-            <div class="pricing-card">
-                <div class="pricing-title" data-fr="Site vitrine standard" data-en="Standard Showcase">Site vitrine standard</div>
-                <div class="pricing-amount">$1150</div>
-                <p class="pricing-description" data-fr="6-8 pages avec plus de fonctionnalités" data-en="6-8 pages with more features">6-8 pages avec plus de fonctionnalités</p>
-                <ul class="pricing-features">
-                    <li data-fr="6 à 8 pages" data-en="6 to 8 pages">6 à 8 pages</li>
-                    <li data-fr="Design sur mesure" data-en="Custom design">Design sur mesure</li>
-                    <li data-fr="Animations fluides" data-en="Smooth animations">Animations fluides</li>
-                    <li data-fr="Système de réservation" data-en="Booking system">Système de réservation</li>
-                    <li data-fr="Intégration réseaux sociaux" data-en="Social media integration">Intégration réseaux sociaux</li>
-                </ul>
-                <button class="btn btn-primary" onclick="smoothScroll('#contact')" data-fr="Demander un devis" data-en="Get a Quote">Demander un devis</button>
+                    <div class="pricing-card">
+                        <div class="pricing-title" data-fr="Site vitrine standard" data-en="Standard Showcase">Site vitrine standard</div>
+                        <div class="pricing-amount">$1200</div>
+                        <p class="pricing-description" data-fr="6-8 pages avec plus de fonctionnalités" data-en="6-8 pages with more features">6-8 pages avec plus de fonctionnalités</p>
+                        <ul class="pricing-features">
+                            <li data-fr="6 à 8 pages" data-en="6 to 8 pages">6 à 8 pages</li>
+                            <li data-fr="Design sur mesure" data-en="Custom design">Design sur mesure</li>
+                            <li data-fr="Animations fluides" data-en="Smooth animations">Animations fluides</li>
+                            <li data-fr="Système de réservation" data-en="Booking system">Système de réservation</li>
+                            <li data-fr="Intégration réseaux sociaux" data-en="Social media integration">Intégration réseaux sociaux</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="smoothScroll('#contact')" data-fr="Demander un devis" data-en="Get a Quote">Demander un devis</button>
+                    </div>
+                </div>
+                <div class="pricing-note">
+                    <strong data-fr="Note importante :" data-en="Important Note:">Note importante :</strong>
+                    <span data-fr="Chaque projet est unique et fait l'objet d'un devis personnalisé selon la complexité, le nombre de pages, les fonctionnalités demandées et vos besoins spécifiques." data-en="Each project is unique and subject to a personalized quote based on complexity, number of pages, requested features and your specific needs.">Chaque projet est unique et fait l'objet d'un devis personnalisé selon la complexité, le nombre de pages, les fonctionnalités demandées et vos besoins spécifiques.</span>
+                </div>
             </div>
-            
-        </div>
-        <div class="pricing-note">
-            <strong data-fr="Note importante :" data-en="Important Note:">Note importante :</strong>
-            <span data-fr="Chaque projet est unique et fait l'objet d'un devis personnalisé selon la complexité, le nombre de pages, les fonctionnalités demandées et vos besoins spécifiques." data-en="Each project is unique and subject to a personalized quote based on complexity, number of pages, requested features and your specific needs.">Chaque projet est unique et fait l'objet d'un devis personnalisé selon la complexité, le nombre de pages, les fonctionnalités demandées et vos besoins spécifiques.</span>
-        </div>
-    </div>
-</section>
+        </section>
 
         <!-- Why Me Section -->
         <section id="whyme">
@@ -996,7 +1073,10 @@
                         <h3 data-fr="Tarif au forfait" data-en="Fixed Rate">Tarif au forfait</h3>
                         <p data-fr="Pas de surprise. Vous connaissez le prix avant le début du projet, selon sa complexité et ses fonctionnalités." data-en="No surprises. You know the price before the project starts, depending on its complexity and features.">Pas de surprise. Vous connaissez le prix avant le début du projet, selon sa complexité et ses fonctionnalités.</p>
                     </div>
-                    
+                    <div class="whyme-item">
+                        <h3 data-fr="Débutant motivé" data-en="Motivated Beginner">Débutant motivé</h3>
+                        <p data-fr="Je suis au début de mon parcours mais je mets passion et rigueur dans chaque projet pour votre satisfaction." data-en="I'm at the beginning of my journey but I put passion and rigor into every project for your satisfaction.">Je suis au début de mon parcours mais je mets passion et rigueur dans chaque projet pour votre satisfaction.</p>
+                    </div>
                 </div>
             </div>
         </section>
